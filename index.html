@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday to you na ka ter! ❤️ </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="has-bg">
+    <!-- Background Overlay -->
+    <div class="bg-overlay"></div>
+
+    <!-- Hidden Audio Element -->
+    <audio id="bg-music" loop>
+        <source src="../suprise-gift/song/music.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Gift Box Overlay -->
+    <div id="gift-overlay" class="gift-overlay" onclick="openGift()">
+        <div class="gift-box">
+            <div class="gift-lid"></div>
+            <div class="gift-ribbon"></div>
+        </div>
+        <p class="gift-hint">แตะเพื่อเปิดของขวัญนะ 🎁</p>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content" class="container hidden">
+        <h1 id="headline">Happy Birthday นะคะ! ❤️</h1>
+
+        <!-- Main Hero Image -->
+        <div id="hero-section" class="hero-section">
+            <div class="polaroid-frame">
+                <img id="main-hero-img" src="img/main/IMG_20250306_161647.jpg" alt="Main Birthday Image">
+                <p class="polaroid-caption">My Favorite Person ✨</p>
+            </div>
+        </div>
+
+        <!-- Spotify-style Music Player -->
+        <p>Whal & Dolph - นานนาน (In Memory Of) [OFFICIAL AUDIO]</p>
+        <p>Whattheduck</p>
+        <div id="music-player" class="music-player hidden">
+            <button id="play-pause-btn" class="player-btn" onclick="toggleMusic()">
+                <span id="play-icon">▶️</span>
+            </button>
+            <div class="player-controls">
+                <span id="current-time" class="time-label">0:00</span>
+                <input type="range" id="progress-bar" class="progress-bar" value="0" min="0" max="100"
+                    oninput="seekMusic()">
+                <span id="duration-time" class="time-label">0:00</span>
+            </div>
+        </div>
+
+        <!-- Animated Cake -->
+        <div class="cake-wrapper">
+            <div class="cake-container">
+                <div class="candle-container" id="candle-box">
+                    <!-- 19 candles will be generated here -->
+                </div>
+                <div class="cake-body">
+                    <div class="cake-top"></div>
+                    <div class="cake-base"></div>
+                </div>
+            </div>
+        </div>
+
+        <p id="instruction-text" class="message">ใช้นิ้ว "เป่า" ที่เทียนเพื่อจุดไฟ✨</p>
+
+        <div id="album-section" class="hidden-content">
+            <div class="album-nav">
+                <button class="nav-btn active" onclick="filterAlbum('normal')">หมวดหมู่ปกติ 🌸</button>
+                <button class="nav-btn" onclick="filterAlbum('private')">หมวดหมู่ไม่บอกก 🔒</button>
+            </div>
+
+            <div class="slider-wrapper">
+                <div id="album-slider" class="album-slider">
+                    <!-- Photos will be loaded here via JS -->
+                </div>
+            </div>
+
+            <p id="hidden-msg" class="hidden" style="margin: 20px 0; font-weight: bold; color: #ff4d6d;">
+                รักเธอที่สุดในโลกเลย! 🌸</p>
+
+            <!-- Heartfelt Message Box -->
+            <div class="message-card">
+                <h2 class="card-title">ข้อความจากใจ ✨</h2>
+                <div class="card-content">
+                    <h3>Happy Birthday na ka ter❤️</h3>
+                    <p>ขอให้เธอมีความสุขมากๆ สุขภาพเเข็งเเรง ไม่เจ็บไม่ป่วย ขอให้สมหวังทุกอย่าง มีสิ่งดีๆเข้ามาในชีวิต
+                        ไม่ว่าจะเป็นเรื่องเรียน เรื่องงาน หรือเรื่องอะไรก็ตาม </p>
+                    <p>ขอให้เป็นปีที่ </p>
+                    <p><b>มี</b> ความสุขมากๆขึ้นกว่าเดิม</p>
+                    <p><b>มี</b> รอยยิ้มที่สดใสมากกว่าเดิม</p>
+                    <p><b>มี</b> เงินทองไหลเข้ามาเยอะๆ</p>
+                    <p><b>มี</b> วันที่ดีในทุกๆวัน</p>
+                    <P>เค้าจะอยู่ข้างๆเธอแบบนี้ตลอดไปนะคะ และเค้าก็จะคอยให้กำลังใจ คอยปลอบใจ คอยโอ๋
+                        คอยดูแล คอยกอดเธอแบบนี้ไปนานๆเลยนะคะ เค้ารักเธอที่สุดเลย ไม่เคยมีวันไหนที่รักเธอน้อยลงเลยนะคะ ❤️
+                        ของขวัญจากลิงแก่ของเธอ 🐒</P>
+                    <h3><b>มีนาแล้ว เมื่อไรจะมีตังง!!! </b> </h3>
+                </div>
+            </div>
+
+            <!-- Final Surprise Image -->
+            <div id="final-section" class="final-section hidden-content">
+                <div class="final-frame">
+                    <img id="last-img" src="img/last/received_663625935619466.jpg" alt="Final Memory">
+                    <p class="final-text">ขอบคุณที่เข้ามาเป็นเรื่องราวดีๆ ในชีวิตเค้านะ ❤️</p>
+                </div>
+            </div>
+
+            <!-- "Do You Love Me?" Mini-Game -->
+            <div id="game-section" class="game-section hidden-content">
+                <h2 class="game-title">สุดท้ายแล้ว... รักเค้ามั้ย? ❤️</h2>
+                <div class="game-buttons">
+                    <button id="yes-btn" class="game-btn yes" onclick="handleYes()">ใช่ที่สุด! ❤️</button>
+                    <button id="no-btn" class="game-btn no" onmouseover="moveNo()" ontouchstart="moveNo()">ไม่รัก
+                        😜</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- "Close App" Overlay -->
+    <div id="close-app-overlay" class="close-overlay hidden">
+        <div class="close-content">
+            <h1 class="fade-text">เค้าก็รักเธอเหมือนกันนนน ❤️</h1>
+        </div>
+    </div>
+
+    <!-- Lightbox / Image Expansion -->
+    <div id="lightbox" class="lightbox hidden" onclick="closeLightbox()">
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <span class="close-btn" onclick="closeLightbox()">&times;</span>
+            <img id="lightbox-img" src="" alt="Expanded Image">
+            <div id="random-quote" class="random-quote"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
